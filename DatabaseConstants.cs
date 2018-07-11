@@ -9,5 +9,6 @@ namespace Database_Logic
     public class DatabaseConstants
     {
         public const string DatabaseConnectionString = "POSDatabaseConnectionString"; 
+
     }
 }
