@@ -17,6 +17,8 @@ namespace Database_Logic
 
 
 
+
+
         static DbHelper()
         {
             factory = new DatabaseProviderFactory();
