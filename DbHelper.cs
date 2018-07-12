@@ -54,6 +54,35 @@ namespace Database_Logic
             return database.ExecuteNonQuery(transaction,storedProcedureName, parameterValues);
         }
 
-        
+        public static int Select(DbCommand dbcommand)
+        {
+            return database.ExecuteNonQuery(dbcommand);
+        }
+
+        public static int Select(CommandType commandType, string Commandtext)
+        {
+            return database.ExecuteNonQuery(commandType, Commandtext);
+        }
+
+        public static int Select(DbCommand dbCommand, DbTransaction dbTransaction)
+        {
+            return database.ExecuteNonQuery(dbCommand, dbTransaction);
+        }
+
+        public static int Select(string storedProcedureName, params object[] parametersValues)
+        {
+            return database.ExecuteNonQuery(storedProcedureName, parametersValues);
+        }
+
+        public static int Select(DbTransaction dbTransaction, CommandType commandType, string commandText)
+        {
+            return database.ExecuteNonQuery(dbTransaction, commandType, commandText);
+        }
+
+        public static int Select(DbTransaction dbTransaction, string storedProcedureName, params object[] parametersValues)
+        {
+            return database.ExecuteNonQuery(dbTransaction, storedProcedureName, parametersValues);
+        }
+
     }
 }
