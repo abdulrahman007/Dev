@@ -23,5 +23,20 @@ namespace Database_Logic
         //    DbHelper.Execute("Pkg_Activitylog.sp_Update", new object[] { activityTypeID, description, modifiedby, logID });
 
         //}
+
+
+        //public void Manioulaate()
+        //{
+        //    string msg = "World";
+        //    GetValue(msg);
+            
+        //}
+
+        //public string GetValue(string msg)
+        //{
+        //    msg = "Hello";
+
+        //    return msg;
+        //}
     }
 }

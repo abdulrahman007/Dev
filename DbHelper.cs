@@ -22,6 +22,27 @@ namespace Database_Logic
             factory = new DatabaseProviderFactory();
             DatabaseFactory.SetDatabaseProviderFactory(factory);
             database = factory.Create(DatabaseConstants.DatabaseConnectionString);
+
+        }
+
+        public static DbCommand FillCommand()
+        {
+            DbConnection dbConnection = database.CreateConnection();
+            DbCommand command = dbConnection.CreateCommand();
+            return command;
+        }
+
+        public static void CreateParameter(ref DbCommand dbCommand, DbType ptype, ParameterDirection pdirection,string pargumentName, object pValue)
+        {
+            DbParameter parameter;
+
+            parameter = dbCommand.CreateParameter();
+            parameter.DbType = ptype;
+            parameter.Direction = pdirection;
+            parameter.ParameterName = pargumentName;
+            parameter.Value = pValue;
+
+            dbCommand.Parameters.Add(parameter);
             
         }
 

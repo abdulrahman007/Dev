@@ -11,27 +11,25 @@ namespace dbTester
     {
         static void Main(string[] args)
         {
-            //"Pkg_Activitylog.sp_Insert"
-
-            /*
              
-p_activitytypeid number,
-p_description varchar,
---p_time timestamp,
-p_created number,
-p_logid out number
-             
-             */
+            System.Data.Common.DbCommand dbcommand;
+            System.Data.Common.DbParameter parameter;
 
-            int activityTypeID = 1;
+            dbcommand = DbHelper.FillCommand();
 
-            string description = "Hello";
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_activitytypeid", 1);
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.String, System.Data.ParameterDirection.Input, "p_description", "How Are You?");
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_created", 21);
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Output, "p_logid", DBNull.Value);
+            
 
-            int createdby = 1;
+            dbcommand.CommandText = "Pkg_Activitylog.sp_Insert";
+            dbcommand.CommandType = System.Data.CommandType.StoredProcedure;
 
-            int logID = 1;
 
-            DbHelper.Execute("Pkg_Activitylog.sp_Insert", new object[] { activityTypeID,description,createdby,logID  });
+
+           
+           DbHelper.Execute(dbcommand);
 
         }
     }
