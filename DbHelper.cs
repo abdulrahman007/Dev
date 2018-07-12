@@ -12,11 +12,17 @@ namespace Database_Logic
 {
     public class DbHelper
     {
+        static DatabaseProviderFactory factory;
         static Database database;
+
+
 
         static DbHelper()
         {
-            database = DatabaseFactory.CreateDatabase(DatabaseConstants.DatabaseConnectionString);
+            factory = new DatabaseProviderFactory();
+            DatabaseFactory.SetDatabaseProviderFactory(factory);
+            database = factory.Create(DatabaseConstants.DatabaseConnectionString);
+            
         }
 
         public static int Execute(DbCommand dbCommand)
