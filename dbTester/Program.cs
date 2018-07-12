@@ -17,6 +17,8 @@ namespace dbTester
 
             dbcommand = DbHelper.FillCommand();
 
+
+
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_activitytypeid", 1);
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.String, System.Data.ParameterDirection.Input, "p_description", "How Are You?");
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_created", 21);
