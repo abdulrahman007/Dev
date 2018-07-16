@@ -34,7 +34,7 @@ namespace Database_Logic
             return command;
         }
 
-        public static DbTransaction FillTransaction()
+        public static DbTransaction VTransaction()
         {
             DbConnection conn = database.CreateConnection();
             DbTransaction transaction = conn.BeginTransaction();
