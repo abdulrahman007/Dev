@@ -34,6 +34,13 @@ namespace Database_Logic
             return command;
         }
 
+        public static DbTransaction FillTransaction()
+        {
+            DbConnection conn = database.CreateConnection();
+            DbTransaction transaction = conn.BeginTransaction();
+            return transaction;
+        }
+
         public static void CreateParameter(ref DbCommand dbCommand, DbType ptype, ParameterDirection pdirection,string pargumentName, object pValue)
         {
             DbParameter parameter;
@@ -47,7 +54,7 @@ namespace Database_Logic
             dbCommand.Parameters.Add(parameter);
             
         }
-
+    
         public static int Execute(DbCommand dbCommand)
         {
             return database.ExecuteNonQuery(dbCommand);
