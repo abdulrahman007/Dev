@@ -36,8 +36,14 @@ namespace Database_Logic
 
         public static DbTransaction VTransaction()
         {
-            DbConnection conn = database.CreateConnection();
-            DbTransaction transaction = conn.BeginTransaction();
+          //DbConnection conn = database.CreateConnection();
+          //DbTransaction transaction = conn.BeginTransaction();
+            DbConnection Conn = database.CreateConnection();
+            Conn.Open();
+          //DbDataReader reader;
+          //DbCommand cmd = new DbCommand(Conn);
+            DbTransaction transaction = Conn.BeginTransaction(IsolationLevel.ReadCommitted);
+          //cmd.Transaction = transaction;
             return transaction;
         }
 
@@ -53,6 +59,10 @@ namespace Database_Logic
 
             dbCommand.Parameters.Add(parameter);
             
+        }
+
+        public static void TransactionParameter()
+        {
         }
     
         public static int Execute(DbCommand dbCommand)
