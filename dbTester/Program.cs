@@ -27,6 +27,7 @@ namespace dbTester
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.String, System.Data.ParameterDirection.Input, "p_description", "How Are You?");
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_created", 21);
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Output, "p_logid", DBNull.Value);
+
             
 
             dbcommand.CommandText = "Pkg_Activitylog.sp_Insert";
