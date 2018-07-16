@@ -14,8 +14,12 @@ namespace dbTester
              
             System.Data.Common.DbCommand dbcommand;
             System.Data.Common.DbParameter parameter;
+            System.Data.Common.DbTransaction transaction;
 
+           
             dbcommand = DbHelper.FillCommand();
+           // transaction = DbHelper.;
+         
 
 
 
