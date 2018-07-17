@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Configuration;
 
 namespace Database_Logic
 {
@@ -15,9 +16,7 @@ namespace Database_Logic
         static DatabaseProviderFactory factory;
         static Database database;
 
-
-
-
+        //public static DbCommand Command { get; private set; }
 
         static DbHelper()
         {
@@ -36,14 +35,11 @@ namespace Database_Logic
 
         public static DbTransaction VTransaction()
         {
-          //DbConnection conn = database.CreateConnection();
-          //DbTransaction transaction = conn.BeginTransaction();
-            DbConnection Conn = database.CreateConnection();
-            Conn.Open();
-          //DbDataReader reader;
-          //DbCommand cmd = new DbCommand(Conn);
-            DbTransaction transaction = Conn.BeginTransaction(IsolationLevel.ReadCommitted);
-          //cmd.Transaction = transaction;
+            DbConnection conn = database.CreateConnection();
+            DbCommand command = conn.CreateCommand();
+            conn.Open();
+            DbTransaction transaction = conn.BeginTransaction();
+            command.Transaction = transaction;
             return transaction;
         }
 
@@ -59,10 +55,6 @@ namespace Database_Logic
 
             dbCommand.Parameters.Add(parameter);
             
-        }
-
-        public static void TransactionParameter()
-        {
         }
     
         public static int Execute(DbCommand dbCommand)

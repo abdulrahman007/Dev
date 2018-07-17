@@ -18,17 +18,17 @@ namespace dbTester
 
            
             dbcommand = DbHelper.FillCommand();
-           // transaction = DbHelper.;
-         
+            transaction = DbHelper.VTransaction();
 
 
-
-            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_activitytypeid", 1);
-            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.String, System.Data.ParameterDirection.Input, "p_description", "How Are You?");
-            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_created", 21);
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_activitytypeid", 4);
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.String, System.Data.ParameterDirection.Input, "p_description", "I'm on ma way");
+            DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Input, "p_created", 1);
             DbHelper.CreateParameter(ref dbcommand, System.Data.DbType.Int32, System.Data.ParameterDirection.Output, "p_logid", DBNull.Value);
 
-            
+
+
+            transaction.Commit();
 
             dbcommand.CommandText = "Pkg_Activitylog.sp_Insert";
             dbcommand.CommandType = System.Data.CommandType.StoredProcedure;
