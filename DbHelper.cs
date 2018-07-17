@@ -33,15 +33,22 @@ namespace Database_Logic
             return command;
         }
 
+        public static DbCommand FillCommand(DbTransaction transaction)
+        {
+            DbCommand command = transaction.Connection.CreateCommand();
+            command.Transaction = transaction;
+            return command;
+        }
+
         public static DbTransaction VTransaction()
         {
             DbConnection conn = database.CreateConnection();
             DbCommand command = conn.CreateCommand();
             conn.Open();
             DbTransaction transaction = conn.BeginTransaction();
-            command.Transaction = transaction;
             return transaction;
         }
+
 
         public static void CreateParameter(ref DbCommand dbCommand, DbType ptype, ParameterDirection pdirection,string pargumentName, object pValue)
         {
